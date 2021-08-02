@@ -1,7 +1,7 @@
 import { EntityRepository, Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { User } from './user.entity';
-import { UserCreateDto } from './user-create.dto';
+import { UserCreateDto } from './dto/user-create.dto';
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
