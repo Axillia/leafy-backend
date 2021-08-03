@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { UploadModule } from './upload/upload.module';
 import { LocationModule } from './location/location.module';
+import { ConditionModule } from './condition/condition.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { LocationModule } from './location/location.module';
     AuthModule,
     UploadModule,
     LocationModule,
+    ConditionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
