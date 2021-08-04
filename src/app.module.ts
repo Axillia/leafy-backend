@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { UploadModule } from './upload/upload.module';
 import { LocationModule } from './location/location.module';
 import { ConditionModule } from './condition/condition.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ConditionModule } from './condition/condition.module';
     UploadModule,
     LocationModule,
     ConditionModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],
