@@ -13,10 +13,10 @@ import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(typeormConfig),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    TypeOrmModule.forRoot(typeormConfig),
     UserModule,
     AuthModule,
     UploadModule,
