@@ -5,6 +5,8 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthRepository } from './auth.repository';
+import { JwtStrategy } from './jwt.strategy';
+import { UserRepository } from '../user/user.repository';
 
 @Module({
   imports: [
@@ -13,9 +15,10 @@ import { AuthRepository } from './auth.repository';
       secret: 'leafyJWT',
       signOptions: { expiresIn: 3600 },
     }),
-    TypeOrmModule.forFeature([AuthRepository]),
+    TypeOrmModule.forFeature([AuthRepository, UserRepository]),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, JwtStrategy],
+  exports: [JwtStrategy, PassportModule],
 })
 export class AuthModule {}
