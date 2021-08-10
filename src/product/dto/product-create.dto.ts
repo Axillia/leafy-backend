@@ -11,9 +11,6 @@ export class ProductCreateDto {
   photo: string;
 
   @IsNumber()
-  user: number;
-
-  @IsNumber()
   condition: number;
 
   @IsNumber()

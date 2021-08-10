@@ -5,21 +5,27 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  UseGuards,
   ValidationPipe,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { Product } from './product.entity';
 import { ProductCreateDto } from './dto/product-create.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { GetUser } from '../auth/get-user.decorator';
+import { User } from '../user/user.entity';
 
 @Controller('product')
 export class ProductController {
   constructor(private productService: ProductService) {}
 
   @Post()
+  @UseGuards(AuthGuard())
   async createProduct(
+    @GetUser() user: User,
     @Body(ValidationPipe) productCreateDto: ProductCreateDto,
   ): Promise<Product> {
-    return await this.productService.createProduct(productCreateDto);
+    return await this.productService.createProduct(productCreateDto, user);
   }
 
   @Get('/all')
