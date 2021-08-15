@@ -9,8 +9,7 @@ export class ProductRepository extends Repository<Product> {
     productCreateDto: ProductCreateDto,
     user: User,
   ): Promise<Product> {
-    const { name, description, photo, location, condition } =
-      productCreateDto;
+    const { name, description, photo, location, condition } = productCreateDto;
 
     const product = new Product();
     product.name = name;
@@ -28,7 +27,8 @@ export class ProductRepository extends Repository<Product> {
     const query = this.createQueryBuilder('product')
       .leftJoinAndSelect('product.user', 'user')
       .leftJoinAndSelect('product.location', 'location')
-      .leftJoinAndSelect('product.condition', 'condition');
+      .leftJoinAndSelect('product.condition', 'condition')
+      .orderBy('product.id', 'DESC');
 
     return await query.getMany();
   }

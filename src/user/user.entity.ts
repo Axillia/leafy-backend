@@ -40,7 +40,11 @@ export class User extends BaseEntity {
   @Column({ nullable: true })
   bio: string;
 
-  @Column({ nullable: true })
+  @Column({
+    nullable: true,
+    default:
+      'https://leafy-assets.s3.ap-southeast-1.amazonaws.com/default-profile-photo.png',
+  })
   avatar: string;
 
   @Column()

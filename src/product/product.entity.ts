@@ -21,7 +21,10 @@ export class Product extends BaseEntity {
   @Column()
   description: string;
 
-  @Column()
+  @Column({
+    default:
+      'https://leafy-assets.s3.ap-southeast-1.amazonaws.com/default-product-photo.png',
+  })
   photo: string;
 
   @ManyToOne(() => User, (user) => user.id)
