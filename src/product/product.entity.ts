@@ -44,4 +44,7 @@ export class Product extends BaseEntity {
 
   @Column({ default: true })
   status: boolean;
+
+  @Column({ default: 0 })
+  view_count: number;
 }

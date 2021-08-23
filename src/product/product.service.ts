@@ -24,9 +24,7 @@ export class ProductService {
   }
 
   async getProductByID(id: number): Promise<Product> {
-    const product = await this.productRepository.findOne(id, {
-      relations: ['user', 'condition', 'location'],
-    });
+    const product = await this.productRepository.getProductByID(id);
 
     if (!product) {
       throw new NotFoundException();

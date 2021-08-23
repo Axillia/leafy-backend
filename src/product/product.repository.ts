@@ -32,4 +32,20 @@ export class ProductRepository extends Repository<Product> {
 
     return await query.getMany();
   }
+
+  async getProductByID(id: number): Promise<Product> {
+    await this.createQueryBuilder()
+      .update(Product)
+      .set({ view_count: () => 'view_count + 1' })
+      .where('product.id = :id', { id: id })
+      .execute();
+
+    const query = this.createQueryBuilder('product')
+      .leftJoinAndSelect('product.user', 'user')
+      .leftJoinAndSelect('product.location', 'location')
+      .leftJoinAndSelect('product.condition', 'condition')
+      .where('product.id = :id', { id: id });
+
+    return await query.getOne();
+  }
 }
