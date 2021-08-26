@@ -10,6 +10,7 @@ import { UploadModule } from './upload/upload.module';
 import { LocationModule } from './location/location.module';
 import { ConditionModule } from './condition/condition.module';
 import { ProductModule } from './product/product.module';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { ProductModule } from './product/product.module';
     LocationModule,
     ConditionModule,
     ProductModule,
+    CommentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
