@@ -24,8 +24,8 @@ export class CommentService {
     return await this.commentRepository.getComments(product_id);
   }
 
-  async getCommentsByUser(user_id: number): Promise<Comment[]> {
-    return await this.commentRepository.getCommentsByUser(user_id);
+  async getCommentsByUser(user: User): Promise<Comment[]> {
+    return await this.commentRepository.getCommentsByUser(user);
   }
 
   async updateComment(

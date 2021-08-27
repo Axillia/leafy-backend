@@ -38,17 +38,16 @@ export class CommentController {
     return await this.commentService.updateComment(id, commentUpdateDto);
   }
 
+  @Get('/user')
+  @UseGuards(AuthGuard())
+  async getCommentsByUser(@GetUser() user: User): Promise<Comment[]> {
+    return await this.commentService.getCommentsByUser(user);
+  }
+
   @Get('/:product_id')
   async getComments(
     @Param('product_id', ParseIntPipe) product_id: number,
   ): Promise<Comment[]> {
     return await this.commentService.getComments(product_id);
-  }
-
-  @Get('/user/:user_id')
-  async getCommentsByUser(
-    @Param('user_id', ParseIntPipe) user_id: number,
-  ): Promise<Comment[]> {
-    return await this.commentService.getCommentsByUser(user_id);
   }
 }
