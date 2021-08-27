@@ -32,7 +32,7 @@ export class CommentRepository extends Repository<Comment> {
       .leftJoinAndSelect('comment.product', 'product')
       .leftJoinAndSelect('comment.user', 'user')
       .where('product.user = :user_id', { user_id: user.id })
-      .where('comment.answer IS NULL');
+      .andWhere('comment.answer IS NULL');
 
     return await query.getMany();
   }
