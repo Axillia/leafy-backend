@@ -44,4 +44,11 @@ export class CommentController {
   ): Promise<Comment[]> {
     return await this.commentService.getComments(product_id);
   }
+
+  @Get('/user/:user_id')
+  async getCommentsByUser(
+    @Param('user_id', ParseIntPipe) user_id: number,
+  ): Promise<Comment[]> {
+    return await this.commentService.getCommentsByUser(user_id);
+  }
 }
