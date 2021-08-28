@@ -11,6 +11,7 @@ import { LocationModule } from './location/location.module';
 import { ConditionModule } from './condition/condition.module';
 import { ProductModule } from './product/product.module';
 import { CommentModule } from './comment/comment.module';
+import { ReportModule } from './report/report.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { CommentModule } from './comment/comment.module';
     ConditionModule,
     ProductModule,
     CommentModule,
+    ReportModule,
   ],
   controllers: [AppController],
   providers: [AppService],
