@@ -12,6 +12,7 @@ import { ConditionModule } from './condition/condition.module';
 import { ProductModule } from './product/product.module';
 import { CommentModule } from './comment/comment.module';
 import { ReportModule } from './report/report.module';
+import { RequestModule } from './request/request.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { ReportModule } from './report/report.module';
     ProductModule,
     CommentModule,
     ReportModule,
+    RequestModule,
   ],
   controllers: [AppController],
   providers: [AppService],
