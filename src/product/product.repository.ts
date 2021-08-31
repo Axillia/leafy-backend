@@ -23,16 +23,6 @@ export class ProductRepository extends Repository<Product> {
     return await product.save();
   }
 
-  async getAllProduct(): Promise<Product[]> {
-    const query = this.createQueryBuilder('product')
-      .leftJoinAndSelect('product.user', 'user')
-      .leftJoinAndSelect('product.location', 'location')
-      .leftJoinAndSelect('product.condition', 'condition')
-      .orderBy('product.id', 'DESC');
-
-    return await query.getMany();
-  }
-
   async getProductByID(id: number): Promise<Product> {
     await this.createQueryBuilder()
       .update(Product)

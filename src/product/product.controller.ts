@@ -5,6 +5,7 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  Query,
   UseGuards,
   ValidationPipe,
 } from '@nestjs/common';
@@ -14,6 +15,8 @@ import { ProductCreateDto } from './dto/product-create.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from '../auth/get-user.decorator';
 import { User } from '../user/user.entity';
+import { PaginateProductResult } from './dto/paginate-product-result';
+import { PaginationDto } from './dto/pagination.dto';
 
 @Controller('product')
 export class ProductController {
@@ -29,8 +32,10 @@ export class ProductController {
   }
 
   @Get('/all')
-  async getAllProduct(): Promise<Product[]> {
-    return await this.productService.getAllProduct();
+  async getAllProduct(
+    @Query() paginationDto: PaginationDto,
+  ): Promise<PaginateProductResult> {
+    return await this.productService.getAllProduct(paginationDto);
   }
 
   @Get('/:id')
