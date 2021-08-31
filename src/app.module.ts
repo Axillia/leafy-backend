@@ -13,6 +13,7 @@ import { ProductModule } from './product/product.module';
 import { CommentModule } from './comment/comment.module';
 import { ReportModule } from './report/report.module';
 import { RequestModule } from './request/request.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { RequestModule } from './request/request.module';
     CommentModule,
     ReportModule,
     RequestModule,
+    CategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
