@@ -9,7 +9,8 @@ export class ProductRepository extends Repository<Product> {
     productCreateDto: ProductCreateDto,
     user: User,
   ): Promise<Product> {
-    const { name, description, photo, location, condition } = productCreateDto;
+    const { name, description, photo, location, condition, category } =
+      productCreateDto;
 
     const product = new Product();
     product.name = name;
@@ -19,6 +20,7 @@ export class ProductRepository extends Repository<Product> {
     product.location = location;
     product.condition = condition;
     product.posted_date = new Date();
+    product.category = category;
 
     return await product.save();
   }

@@ -9,6 +9,7 @@ import {
 import { User } from '../user/user.entity';
 import { Condition } from '../condition/condition.entity';
 import { Location } from '../location/location.entity';
+import { Category } from '../category/category.entity';
 
 @Entity()
 export class Product extends BaseEntity {
@@ -47,4 +48,8 @@ export class Product extends BaseEntity {
 
   @Column({ default: 0 })
   view_count: number;
+
+  @ManyToOne(() => Category, (category) => category.id)
+  @JoinColumn()
+  category: number;
 }

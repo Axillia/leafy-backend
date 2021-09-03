@@ -16,4 +16,7 @@ export class ProductCreateDto {
 
   @IsNumber()
   location: number;
+
+  @IsNumber()
+  category: number;
 }
