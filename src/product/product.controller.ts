@@ -17,6 +17,7 @@ import { GetUser } from '../auth/get-user.decorator';
 import { User } from '../user/user.entity';
 import { PaginateProductResult } from './dto/paginate-product-result';
 import { PaginationDto } from './dto/pagination.dto';
+import { GetProductsFilterDto } from './dto/get-products-filter.dto';
 
 @Controller('product')
 export class ProductController {
@@ -33,9 +34,10 @@ export class ProductController {
 
   @Get('/all')
   async getAllProduct(
+    @Query() filterDto: GetProductsFilterDto,
     @Query() paginationDto: PaginationDto,
   ): Promise<PaginateProductResult> {
-    return await this.productService.getAllProduct(paginationDto);
+    return await this.productService.getAllProduct(paginationDto, filterDto);
   }
 
   @Get('/:id')

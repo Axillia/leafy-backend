@@ -6,6 +6,7 @@ import { ProductCreateDto } from './dto/product-create.dto';
 import { User } from '../user/user.entity';
 import { PaginationDto } from './dto/pagination.dto';
 import { PaginateProductResult } from './dto/paginate-product-result';
+import { GetProductsFilterDto } from './dto/get-products-filter.dto';
 
 @Injectable()
 export class ProductService {
@@ -23,31 +24,9 @@ export class ProductService {
 
   async getAllProduct(
     paginationDto: PaginationDto,
+    filterDto: GetProductsFilterDto,
   ): Promise<PaginateProductResult> {
-    const skippedItems = (paginationDto.page - 1) * paginationDto.limit;
-
-    const totalCount = await this.productRepository.count();
-    let totalPages = Math.floor(totalCount / paginationDto.limit);
-    if (totalCount % paginationDto.limit > 0) {
-      totalPages++;
-    }
-
-    const products = await this.productRepository
-      .createQueryBuilder('product')
-      .orderBy('product.id', 'DESC')
-      .leftJoinAndSelect('product.location', 'location')
-      .leftJoinAndSelect('product.condition', 'condition')
-      .offset(skippedItems)
-      .limit(paginationDto.limit)
-      .getMany();
-
-    return {
-      totalCount,
-      totalPages: totalPages,
-      page: paginationDto.page,
-      limit: paginationDto.limit,
-      data: products,
-    };
+    return await this.productRepository.getAllProduct(paginationDto, filterDto);
   }
 
   async getProductByID(id: number): Promise<Product> {
