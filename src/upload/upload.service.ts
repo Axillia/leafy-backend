@@ -20,10 +20,10 @@ export class UploadService {
       contentType: multerS3.AUTO_CONTENT_TYPE,
       acl: 'public-read',
       key: function (request, file, cb) {
-        cb(null, `${Date.now().toString()}${path.extname(file.originalname)}`);
+        cb(null, `${file.originalname}`);
       },
     }),
-  }).array('uploadFileObj', 1);
+  }).array('filepond', 1);
 
   async fileUpload(@Req() req, @Res() res) {
     try {
