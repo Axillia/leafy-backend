@@ -20,7 +20,7 @@ export class UploadService {
       s3: this.s3,
       bucket: this.AWS_S3_BUCKET_NAME,
       contentType: multerS3.AUTO_CONTENT_TYPE,
-      acl: 'public-read',
+      // acl: 'public-read',
       key: function (request, file, cb) {
         cb(null, `${file.originalname}`);
       },
