@@ -10,7 +10,9 @@ export class UploadService {
   s3 = new AWS.S3({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    region: 'ap-southeast-1',
+    region: 'us-east-1',
+    endpoint:
+      'https://8c2366e8bb3a0811e2230fb8dd7beeb6.r2.cloudflarestorage.com',
   });
 
   upload = multer({
